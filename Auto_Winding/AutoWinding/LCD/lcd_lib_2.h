@@ -1,17 +1,3 @@
-//***************************************************************************
-//  File........: lcd_lib.h
-//
-//  Author(s)...: Pashgan    chipenable.ru
-//
-//  Target(s)...: ATMega...
-//
-//  Compiler....: IAR, CodeVision, GNU GCC
-//
-//  Description.: ƒрайвер знакосинтезирующего жк диспле€
-//
-//  Data........: 20.07.13  
-//
-//***************************************************************************
 #ifndef LCD_LIB_H
 #define LCD_LIB_H
 
@@ -20,27 +6,27 @@
 //здесь € определил виртуальный порт
 
 //шина данных LCD
-#define LCD_PORT  LCD_DATA, F, _VIRT
+#define LCD_PORT  LCD_DATA, A, _REAL
 
-#define LCD_DATA_0  D, 0, _HI
-#define LCD_DATA_1  D, 1, _HI
-#define LCD_DATA_2  D, 2, _HI
-#define LCD_DATA_3  C, 5, _HI
-#define LCD_DATA_4  C, 6, _HI
-#define LCD_DATA_5  C, 7, _HI
-#define LCD_DATA_6  B, 4, _HI
-#define LCD_DATA_7  B, 5, _HI
+#define LCD_DATA_0  A, 0, _HI
+#define LCD_DATA_1  A, 1, _HI
+#define LCD_DATA_2  A, 2, _HI
+#define LCD_DATA_3  A, 3, _HI
+#define LCD_DATA_4  A, 4, _HI
+#define LCD_DATA_5  A, 5, _HI
+#define LCD_DATA_6  A, 6, _HI
+#define LCD_DATA_7  A, 7, _HI
 
 //управл€ющие выводы LCD
-#define LCD_RS  C, 0, _HI
-#define LCD_RW  C, 1, _HI
-#define LCD_EN  C, 2, _HI  
+#define LCD_RS  C, 6, _HI
+#define LCD_RW  C, 7, _HI
+#define LCD_EN  B, 0, _HI  
 
 /*____________________________________________________________________*/
 
 //глобальные настройки драйвера
 #define LCD_CHECK_FL_BF             1
-#define LCD_BUS_4_8_BIT             0
+#define LCD_BUS_4_8_BIT             1
 
 //настройки инициализации диспле€
 #define LCD_ONE_TWO_LINE            1
