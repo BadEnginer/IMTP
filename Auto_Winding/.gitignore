@@ -1,0 +1,17 @@
+/Debug/
+*.bin
+*.hex
+*.o
+*.d
+*.cproj
+*.xml
+*.atsuo
+*.mk
+*.eep
+*.elf
+*.lss
+*.map
+*.scre
+*.srec
+*.atsln
+
