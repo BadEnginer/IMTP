@@ -11,14 +11,14 @@ void InitTask(Task* pTask, TP pFunc, uint16_t timer)
 	pTask->time = timer;	// Итерируем время отсюда
 	pTask->run = 0;
 	pTask->str_time = timer; // Запоминаем время тут
-	pTask->state = IDLE; // Что бы не запустилась пока 
-	pTask->pFunc = pFunc; // Любая функция 
+	pTask->state = IDLE;	// Что бы не запустилась пока 
+	pTask->pFunc = pFunc;   // Любая функция 
 }
 
 uint8_t RunTask(TaskQueue* pTaskQueue,Task* pTask, TASK_STATE new_state, uint16_t timer)
 {
 	pTask->state = new_state; 
-	//if (timer != 0 )// Почему ?
+	if(timer>0) // Это для первого запуска время
 		pTask->time = timer;  
 	for(uint8_t i = 0; i <= pTaskQueue->tail ; i++)
 		if(pTaskQueue->pTasks[i]->pFunc == pTask->pFunc)
