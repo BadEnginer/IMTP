@@ -1,4 +1,5 @@
 /Debug/
+/Auto_Winding/
 *.bin
 *.hex
 *.o
@@ -12,4 +13,5 @@
 *.scre
 *.srec
 *.pdf
+*.rar
 

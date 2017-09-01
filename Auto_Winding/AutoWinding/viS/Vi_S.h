@@ -3,7 +3,6 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <string.h>
 #define TASK_QUEUE_SIZE 15
 
 typedef enum {IDLE, DISPOSABLE, CONTINUOUS}TASK_STATE; // Пусто Единожды Много
