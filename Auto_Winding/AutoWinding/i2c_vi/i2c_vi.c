@@ -5,14 +5,14 @@ void initI2C(){
 	TWSR = 0;
 }
 
-void  i2cWrite(uint8_t reg,uint8_t data){
+void  i2cWrite(uint8_t adr,uint8_t reg,uint8_t data){
 	//----------------START----------------------
 	TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);				
 	while(!(TWCR & (1<<TWINT)));						
 	//------------------------------------------
 
 	//------------Transmit data-----------------
-	TWDR = AS5048_W;										
+	TWDR = adr;										
 	TWCR = (1<<TWINT)|(1<<TWEN); 						
 	while(!(TWCR & (1<<TWINT)));						
 	//------------------------------------------
@@ -34,7 +34,7 @@ void  i2cWrite(uint8_t reg,uint8_t data){
 	//------------------------------------------
 }
 
-uint8_t i2cRead(uint8_t reg){
+uint8_t i2cRead(uint8_t adr,uint8_t reg){
 	
 	volatile 	uint8_t data=0xFF;
 
@@ -44,7 +44,7 @@ uint8_t i2cRead(uint8_t reg){
 	//-------------------------------------------
 
 	//------------Transmit data------------------
-	TWDR =AS5048_W;									
+	TWDR = adr;									
 	TWCR = (1<<TWINT)|(1<<TWEN); 					
 	while(!(TWCR & (1<<TWINT)));					
 	//-------------------------------------------
@@ -60,7 +60,7 @@ uint8_t i2cRead(uint8_t reg){
 	while(!(TWCR & (1<<TWINT)));
 
 	//----------Transmit data--------------------
-	TWDR = AS5048_R;							 	
+	TWDR = adr|(1<<0);							 	
 	TWCR = (1<<TWINT)|(1<<TWEN); 					
 	while(!(TWCR & (1<<TWINT)));					
 	//-------------------------------------------

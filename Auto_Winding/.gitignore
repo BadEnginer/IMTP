@@ -3,8 +3,6 @@
 *.hex
 *.o
 *.d
-*.cproj
-*.xml
 *.atsuo
 *.mk
 *.eep
@@ -13,5 +11,5 @@
 *.map
 *.scre
 *.srec
-*.atsln
+*.pdf
 

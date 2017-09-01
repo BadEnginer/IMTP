@@ -1,6 +1,6 @@
-#include "Vi_OS.h"
+#include "Vi_S.h"
 
-void InitVI_OS(TaskQueue* pTaskQueue, частота работы)
+void InitVI_OS(TaskQueue* pTaskQueue)//, частота работы)
 {
 	total_time = 0;
 	pTaskQueue->tail = 0; // Обноляет всю очередь

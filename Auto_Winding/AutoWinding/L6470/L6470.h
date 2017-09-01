@@ -1,9 +1,9 @@
 #ifndef L6470_H
 
 #define L6470_H
-#include "spi.h"
+#include "../spi/spi.h"
 #include <stdbool.h>
-#include "bits_macros.h"
+#include "../bits_macros.h"
 
 typedef enum {
 	ADR_ABS_POS			=((uint8_t)0x01),
