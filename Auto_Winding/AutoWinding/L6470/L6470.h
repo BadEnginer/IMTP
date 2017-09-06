@@ -62,7 +62,7 @@ typedef enum {
 
 typedef enum {
 		FWD		=((uint8_t)0x01),	// Направления вращения прямое
-		REV		=((uint8_t)0x00)	// Направления вращения обратное
+		BWD		=((uint8_t)0x00)	// Направления вращения обратное
 	} ServoDirect;
 	
 typedef struct
@@ -151,9 +151,9 @@ typedef struct
 	uint8_t  ocd_th;
 	uint8_t  stall_th;
 	uint8_t  step_mode;
-	uAlarm  alarm_en;
-	uConfig config;
-	uStatus status;
+	uAlarm	 alarm_en;
+	uConfig	 config;
+	uStatus  status;
 }	StatusServo;
 
 
