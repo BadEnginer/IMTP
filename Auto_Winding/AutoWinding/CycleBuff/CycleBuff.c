@@ -94,6 +94,6 @@ float AveregBuff(CycleBuff* buff,void* answer) // —читает среднее из буфера и во
 	{
 		answerInt = (answerInt / (buff->count));
 		*(int32_t*)answer = answerInt;
-		return (float) (answerInt - (int32_t)speed_data);
+		return (float) (speed_data=answerInt - (int32_t)speed_data);
 	}
 }

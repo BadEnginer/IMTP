@@ -53,3 +53,11 @@ uint16_t getPosition()
 {
 	return (0.219*((i2cRead(AS5048_ADR,AS5048_ANGLE_HI) << 6) + (i2cRead(AS5048_ADR,AS5048_ANGLE_LO))));
 }
+
+uint16_t getPositionAver(uint8_t dev)
+{
+	uint32_t temp = 0 ;
+	for(uint8_t i = 0;i<dev;i++)
+		temp+= (2.19*((i2cRead(AS5048_ADR,AS5048_ANGLE_HI) << 6) + (i2cRead(AS5048_ADR,AS5048_ANGLE_LO))));
+	return (temp/dev)/10;
+}

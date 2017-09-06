@@ -59,6 +59,9 @@ void LCD_Init(void);                                  //инициализация портов и ж
 void LCD_WriteCom(uint8_t data);                      //посылает команду жкд
 void LCD_WriteData(char data);                        //выводит символ на жкд
 void LCD_SendStr(char *str);                          //выводит строку из ОЗУ
+int8_t intToChar (int32_t digit,char *c);
+void LCDAngle(uint8_t x,uint8_t y,int32_t angle);
+void LCDDigit(uint8_t x,uint8_t y,int32_t digit);
 
 #ifdef __GNUC__
    void LCD_SendStrFl(char *str);                           //выводит строку из флэш памяти     
@@ -67,5 +70,7 @@ void LCD_SendStr(char *str);                          //выводит строку из ОЗУ
    void LCD_SendStrFl(char __flash *str);                   //выводит строку из флэш памяти
    void LCD_SetUserChar(uint8_t __flash *sym, uint8_t adr); //загрузить пользовательский символ
 #endif
+
+
 
 #endif

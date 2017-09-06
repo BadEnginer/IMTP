@@ -20,18 +20,20 @@ uint8_t RunTask(TaskQueue* pTaskQueue,Task* pTask, TASK_STATE new_state, uint16_
 	pTask->state = new_state; 
 	if(timer>0) // Это для первого запуска время
 		pTask->time = timer;  
-	for(uint8_t i = 0; i <= pTaskQueue->tail ; i++)
-		if(pTaskQueue->pTasks[i]->pFunc == pTask->pFunc)
+	for(uint8_t i = 0; i <= pTaskQueue->tail ; i++){
+		if(pTaskQueue->pTasks[i] == pTask)
 			{
 				pTaskQueue->pTasks[i] = pTask; // А может и не надо вдруг одна задача в разных потоках
-				return 2; // Дефайн а то что это ? 
+				return 2; // Дефайн 
 			} 
-		else if((pTaskQueue->tail) <= TASK_QUEUE_SIZE)
+			}
+		 if((pTaskQueue->tail) <= TASK_QUEUE_SIZE)
 			{
 				pTaskQueue->pTasks[pTaskQueue->tail] = pTask;
 				pTaskQueue->tail++;
 				return 1;
 			}
+		
 	return 255; 
 }
 

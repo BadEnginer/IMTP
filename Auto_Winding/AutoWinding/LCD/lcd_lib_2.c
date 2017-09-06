@@ -171,6 +171,47 @@ void LCD_SendStr(char *str)
   }
 }
 
+int8_t intToChar (int32_t digit,char *c){
+	int8_t sing = 1;
+	if(digit<0){
+		digit*=(-1);
+		sing = -1;
+	}
+	for(uint8_t i=0; i<8;i++){
+		c[i]=(digit%10)+'0';
+		if(!(digit/=10)) return i*sing;
+	}
+}
+void LCDDigit(uint8_t x,uint8_t y,int32_t digit){
+	LCD_Goto(x,y);
+	char c[10] ={0};
+	int8_t i = intToChar(digit,c);
+	if (i<0){
+		i*=(-1);
+		LCD_WriteData('-');
+	}
+	for(;i>0;i--)
+	LCD_WriteData(c[i]);
+	LCD_WriteData(c[0]);
+}
+void LCDAngle(uint8_t x,uint8_t y,int32_t angle){
+	LCD_Goto(x,y);
+	char c[10] ={0};
+	int8_t i = intToChar(angle,c);
+	if (i<0){
+		i*=(-1);
+		LCD_WriteData('-');
+	}
+	for(uint8_t t = i; t<3;t++)
+	LCD_WriteData(c[8]+'0');
+	for(;i>=1;i--)
+	LCD_WriteData(c[i]);
+	LCD_WriteData('.');
+	LCD_WriteData(c[0]);
+}
+
+
+
 
 #ifdef __GNUC__
 
@@ -228,5 +269,7 @@ void LCD_SetUserChar(uint8_t __flash *sym, uint8_t adr)
       i++;
    }    
 }
+
+
 
 #endif

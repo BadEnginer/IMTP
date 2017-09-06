@@ -13,6 +13,7 @@
 #define ZERO_POS_LO		0x17							// address
 
 uint16_t	getPosition();
+uint16_t	getPositionAver(uint8_t dev);
 void  	setZero();
 void	setZeroPos(uint8_t ,uint8_t);			
 float	AS5058ReadAng();

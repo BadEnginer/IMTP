@@ -7,7 +7,7 @@
 	#define F_CPU 16000000L
 #endif
 
-#define F_I2C 100000UL  					    		// Speed I2C
+#define F_I2C 400000UL  					    		// Speed I2C
 #define TWBR_VALUE (((F_CPU)/(F_I2C)-16)/2)				// calculation i2c 
 #define T_SEC(D)	(1.0/(F_CPU/D))						// Time in sec
 #if ((TWBR_VALUE > 255) || (TWBR_VALUE == 0))			// limitation i2c speed
