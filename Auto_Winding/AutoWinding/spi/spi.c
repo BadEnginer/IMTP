@@ -1,7 +1,7 @@
 #include "spi.h"
 
 /*инициализация SPI*/
-void SPI_Init(void)
+void initSPI(void)
 {
   /*настройка портов ввода-вывода
   все выводы, кроме MISO выходы*/

@@ -1,5 +1,8 @@
 #include "L6470.h"
-
+void initL6470(){
+	SetParam(ADR_ABS_POS, 0);
+}
+	
 void	SetParam(ServoReg in_servo_reg, uint32_t value)
 {
 	SPI_WriteByte((uint8_t) in_servo_reg);

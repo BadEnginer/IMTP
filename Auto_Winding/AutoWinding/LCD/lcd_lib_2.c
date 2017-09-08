@@ -134,7 +134,7 @@ void LCD_WriteData(char data)
 }
 
 /*функция инициализации*/
-void LCD_Init(void)
+void initLCD(void)
 {
   LCD_DirPort(LCD_PORT, 0xff);
   LCD_DirPin(LCD_RS, _OUT);
@@ -181,6 +181,7 @@ int8_t intToChar (int32_t digit,char *c){
 		c[i]=(digit%10)+'0';
 		if(!(digit/=10)) return i*sing;
 	}
+	return 0;
 }
 void LCDDigit(uint8_t x,uint8_t y,int32_t digit){
 	LCD_Goto(x,y);

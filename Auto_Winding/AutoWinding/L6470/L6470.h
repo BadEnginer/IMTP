@@ -156,7 +156,7 @@ typedef struct
 	uStatus  status;
 }	StatusServo;
 
-
+void		initL6470();
 void		SetParam(ServoReg in_servo_reg, uint32_t value);
 uint32_t	GetParam(ServoReg out_servo_reg);
 void		Run(ServoDirect direct, uint32_t speed);

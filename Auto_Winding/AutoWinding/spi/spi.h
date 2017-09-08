@@ -14,7 +14,10 @@
 #define __restore_interrupt(var) SREG = (var)
 #define __disable_interrupt() cli()
 #define __enable_interrupt() sei()
-#define __delay_cycles(var) _delay_us((unsigned int)(var)/(F_CPU/1000000))
+#ifndef __delay_cycles
+	#define __delay_cycles(var) _delay_us((unsigned int)(var)/(F_CPU/1000000))
+#endif
+
 
 #define SPI_PORTX   PORTB
 #define SPI_DDRX    DDRB
@@ -25,7 +28,7 @@
 #define SPI_SS     4
 
 /*инициализаци€ SPI модул€*/
-void SPI_Init(void); 
+void initSPI(void); 
 
 /*отправить байт данных по SPI*/
 void SPI_WriteByte(uint8_t data); 

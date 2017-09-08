@@ -38,6 +38,7 @@ SUBDIRS :=  \
 ../i2c_vi \
 ../L6470 \
 ../LCD \
+../tasks \
 ../timers \
 ../viS \
 ../spi
@@ -48,11 +49,17 @@ C_SRCS +=  \
 ../as5048/as5048.c \
 ../CycleBuff/CycleBuff.c \
 ../i2c_vi/i2c_vi.c \
+../interrupt.c \
 ../L6470/L6470.c \
 ../LCD/lcd_lib_2.c \
 ../main.c \
 ../spi/spi.c \
-../tasks.c \
+../tasks/taskAngle.c \
+../tasks/taskButton.c \
+../tasks/taskHall.c \
+../tasks/tasks.c \
+../tasks/taskServo.c \
+../tasks/tasksLCD.c \
 ../timers/timer_vi.c \
 ../viS/Vi_S.c
 
@@ -67,11 +74,17 @@ OBJS +=  \
 as5048/as5048.o \
 CycleBuff/CycleBuff.o \
 i2c_vi/i2c_vi.o \
+interrupt.o \
 L6470/L6470.o \
 LCD/lcd_lib_2.o \
 main.o \
 spi/spi.o \
-tasks.o \
+tasks/taskAngle.o \
+tasks/taskButton.o \
+tasks/taskHall.o \
+tasks/tasks.o \
+tasks/taskServo.o \
+tasks/tasksLCD.o \
 timers/timer_vi.o \
 viS/Vi_S.o
 
@@ -79,11 +92,17 @@ OBJS_AS_ARGS +=  \
 as5048/as5048.o \
 CycleBuff/CycleBuff.o \
 i2c_vi/i2c_vi.o \
+interrupt.o \
 L6470/L6470.o \
 LCD/lcd_lib_2.o \
 main.o \
 spi/spi.o \
-tasks.o \
+tasks/taskAngle.o \
+tasks/taskButton.o \
+tasks/taskHall.o \
+tasks/tasks.o \
+tasks/taskServo.o \
+tasks/tasksLCD.o \
 timers/timer_vi.o \
 viS/Vi_S.o
 
@@ -91,11 +110,17 @@ C_DEPS +=  \
 as5048/as5048.d \
 CycleBuff/CycleBuff.d \
 i2c_vi/i2c_vi.d \
+interrupt.d \
 L6470/L6470.d \
 LCD/lcd_lib_2.d \
 main.d \
 spi/spi.d \
-tasks.d \
+tasks/taskAngle.d \
+tasks/taskButton.d \
+tasks/taskHall.d \
+tasks/tasks.d \
+tasks/taskServo.d \
+tasks/tasksLCD.d \
 timers/timer_vi.d \
 viS/Vi_S.d
 
@@ -103,11 +128,17 @@ C_DEPS_AS_ARGS +=  \
 as5048/as5048.d \
 CycleBuff/CycleBuff.d \
 i2c_vi/i2c_vi.d \
+interrupt.d \
 L6470/L6470.d \
 LCD/lcd_lib_2.d \
 main.d \
 spi/spi.d \
-tasks.d \
+tasks/taskAngle.d \
+tasks/taskButton.d \
+tasks/taskHall.d \
+tasks/tasks.d \
+tasks/taskServo.d \
+tasks/tasksLCD.d \
 timers/timer_vi.d \
 viS/Vi_S.d
 
@@ -125,6 +156,18 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -167,6 +210,13 @@ i2c_vi/%.o: ../i2c_vi/%.c
 	@echo Finished building: $<
 	
 
+./%.o: .././%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 4.9.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 L6470/%.o: ../L6470/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
@@ -181,14 +231,14 @@ LCD/%.o: ../LCD/%.c
 	@echo Finished building: $<
 	
 
-./%.o: .././%.c
+spi/%.o: ../spi/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-spi/%.o: ../spi/%.c
+tasks/%.o: ../tasks/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
